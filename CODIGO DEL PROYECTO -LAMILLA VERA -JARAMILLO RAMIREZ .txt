@@ -1,0 +1,71 @@
+########################################################################################################
+#######                                                                                        #########
+#######                               PROYECTO DE PROCESOS    
+#########                                       
+#                                     NUBES DE PALABRAS EN R 
+#######                                                                                        #########
+########################################################################################################
+
+
+                              #################################################
+                               
+                              #INTEGRANTES   - LAMILLA VERA KEVIN 
+                              
+                              #             - JARAMILLO RAMIREZVALERIA 
+                              #################################################
+
+
+#SE DEBEN INSTALAR  LOS PAQUETES 
+
+#install.packages("tm")
+#install.packages("wesanderson")
+#install.packages("wordcloud")
+#install.packages("ggplot2")
+#install.packages("dplyr")
+#**************************
+
+#SE NECESITAN LAS SIGUIENTES LIBRERIAS 
+
+
+library(tm) # específico para minería de textos.
+
+library(wesanderson)
+
+library(dplyr) # con funciones auxiliares para manipular y transformar datos. En particular, el operador %>% permite escribir funciones más legibles para seres humanos.
+
+library(ggplot2)#una gramática de gráficas que expande las funciones base de R.
+
+library(wordcloud)#para graficar nubes de palabras 
+
+tags  <- read.csv("convertcsv (1) (1).csv", header=TRUE) #leyendo el documento
+
+      word  = (tags$TagName)
+
+      freq = (tags$Count)
+ 
+      par(bg="black")
+      
+# Graficando este nuevo objeto 
+      
+wordcloud(
+            word, freq,
+            
+            rot.per =.15, 
+            
+            max.words =2144,# CANTIDAD DE PALABRAS QUE VAN A IR EN LA NUBE 
+            
+           random.order = FALSE, 
+           
+           scale=c(7,.2),
+           
+           # colors= brewer.pal(8,"BuPu"),
+           
+           #colors =brewer.pal(5,"Spectral"))  OTRO TIPO DE DISENO 
+           
+           colors =  brewer.pal(6,"Dark2"),  # OTRO TIPO DE DISENO 
+        
+           min.freq=0    
+           
+                                                )
+
+
